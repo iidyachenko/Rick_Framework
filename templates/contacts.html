@@ -4,15 +4,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
     <title>Contacts</title>
+    <style type="text/css">
+			* {margin: 0; padding: 0;}
+
+            body {
+                font-family: sans-serif;
+              }
+
+            .simple_text{
+                font-size: 16px;
+                line-height: 26px;
+                color: #1F3F68;
+                letter-spacing: 0.05em;
+                opacity: 0.6;
+            }
+
+            .project_text{
+                text-align: center;
+                letter-spacing: 0.05em;
+                opacity: 1;
+                color: #222222;
+                width: 75%;
+                margin: 32px auto 64px;
+            }
+
+            .main_header{
+                font-size: 64px;
+                color: #1F3F68;
+                font-weight: 300;
+                line-height: 74px;
+                letter-spacing: 0.04em;
+                margin-bottom: 32px;
+                width: 510px;
+            }
+
+            .top_button{
+                background: #5A98D0;
+                box-shadow: 5px 10px 20px rgba(53, 110, 173, 0.2);
+                border-radius: 10px;
+                font-size: 16px;
+                line-height: 26px;
+                text-align: center;
+                letter-spacing: 0.04em;
+                color: #FFFFFF;
+                padding: 15px 50px;
+                text-decoration: none;
+                display: inline-block;
+                margin-top: 71px;
+            }
+
+            .contact_header{
+                font-weight: 500;
+                font-size: 44px;
+                text-align: center;
+                line-height: 74px;
+                letter-spacing: 0.04em;
+                color: #FFFFFF;
+                padding-top: 51px;
+                padding-bottom: 16px;
+            }
+
+            .contact_heder_text{
+                text-align: center;
+                letter-spacing: 0.04em;
+                color: rgba(255, 255, 255, 0.6);
+
+            }
+
+            .sub_header{
+                font-size: 36px;
+                text-align: center;
+                font-weight: 300;
+                line-height: 46px;
+                letter-spacing: 0.05em;
+            }
+
+            .header_4{
+                font-size: 20px;
+                line-height: 30px;
+                color: #1F3F68;
+                letter-spacing: 0.05em;
+                margin-bottom: 14px;
+            }
+
+            .input_box{
+                border: 1px solid #356EAD;
+                box-sizing: border-box;
+                border-radius: 10px;
+                opacity: 0.4;
+                padding: 36px 21px;
+            }
+
+            .sub_button{
+                background: #5A98D0;
+                box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+                border-radius: 10px;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 26px;
+                text-align: center;
+                color: #FFFFFF;
+                text-transform: uppercase;
+                padding-top: 23px;
+                padding-bottom: 23px;
+            }
+
+            .card_link{
+                font-size: 14px;
+                line-height: 30px;
+                letter-spacing: 0.05em;
+                color: #5A98D0;
+                text-decoration: none;
+            }
+
+            .main_header_block{
+                min-height: 768px;
+                background: linear-gradient(0deg, #EBF3FB 8.84%, rgba(152, 195, 232, 0) 31.12%);
+                margin-bottom: 64px;
+            }
+
+            .main_header_content{
+                max-width: 1366px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                min-height: 768px;
+            }
+
+            .header_icon_block{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 42px;
+            }
+
+            .header_text_block{
+                margin-top: 115px;
+                flex-grow: 1;
+                background-image: url(img/header_illustration.png);
+                background-repeat: no-repeat;
+                background-position: right center;
+            }
+
+            .mission_block{
+
+                max-width: 1366px;
+                margin: 0 auto;
+            }
+
+            .mission_block_content{
+                margin-bottom: 64px;
+                margin-top: 64px;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .mission_block_card{
+                width: 359px;
+                padding: 44px 32px;
+                box-sizing: border-box;
+                background: #FFFFFF;
+                box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+            }
+
+            .card_img{
+                align-items: center;
+                margin-bottom: 51px;
+            }
+
+            .card_img1{
+                position: absolute;
+                left: 18px;
+                bottom: 30px;
+            }
+
+            .card_img2{
+                position: relative;
+            }
+
+            .project_list_header{
+                max-width: 1366px;
+                margin: 0 auto;
+            }
+
+            .project_item{
+                position: relative;
+                flex-grow: 1;
+            }
+
+            .project_item_margin{
+                margin-right: 32px;
+            }
+
+            .project_img{
+                width: 100%;
+            }
+
+            .project_parent{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 32px;
+            }
+
+            .project_img_text{
+                font-size: 32px;
+                line-height: 46px;
+                text-align: right;
+                letter-spacing: 0.05em;
+                color: #FFFFFF;
+                position: absolute;
+                top: 64px;
+                right: 64px;
+            }
+
+            .project_img_text_2{
+                font-size: 32px;
+                line-height: 46px;
+                text-align: right;
+                letter-spacing: 0.05em;
+                color: #FFFFFF;
+                position: absolute;
+                top: 32px;
+                left: 32px;
+            }
+
+
+            .footer_block{
+                margin-top: 112px;
+                background: #316099;
+            }
+
+            .footer_talk_block{
+                align-items: center;
+                max-width: 1366px;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .footer_talk_block_text{
+                width: 495px;
+                padding-bottom: 96px;
+            }
+
+            .footer_contacts{
+                max-width: 1366px;
+                margin: 0 auto;
+                width: 80%;
+            }
+
+            .footer_list{
+                list-style-type: none;
+                display: flex;
+                justify-content: space-between;
+                margin-top: 64px;
+                font-size: 16px;
+                line-height: 26px;
+                letter-spacing: 0.05em;
+                color: #FFFFFF;
+            }
+
+            .footer_list_el{
+                flex-grow: 1;
+                display: flex;
+                flex-basis: 33.333%;
+            }
+
+            .footer_copywrite{
+                width: 80%;
+                margin-top: 64px;
+                padding-bottom: 64px;
+            }
+
+            .header_contacts{
+                max-width: 1366px;
+                margin: 0 auto;
+            }
+
+            .contacts_header_block{
+                min-height: 250px;
+                margin-top: 2%;
+                background-image: url(img/contacts_back.png);
+            }
+
+            .contacts_container{
+                max-width: 1366px;
+                margin: 0 auto;
+            }
+
+            .contacts_main_block{
+
+                padding-top: 57px;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                width: 80%;
+                margin: auto;
+            }
+
+            .contacts_address_block{
+                min-height: 800px;
+                width: 45%;
+                margin-left: 2%;
+                display: flex;
+                align-items: left;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 359px;
+            }
+
+            .contacts_message_block{
+                min-height: 800px;
+                width: 45%;
+                display: flex;
+                align-items: left;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 500px;
+                background: #FFFFFF;
+                box-shadow: 5px 10px 50px rgba(16, 112, 177, 0.2);
+                border-radius: 10px;
+                box-sizing: border-box;
+                padding: 56px 56px;
+            }
+
+            .map_block{
+                height: 480px;
+                width: 80%;
+                margin: 0 auto;
+                margin-top: 5%;
+            }
+
+            .header_text{
+              width: 425px;
+            }
+
+            .footer_header_txt{
+              width: 340px;
+              text-align: left;
+              line-height: 46px;
+              letter-spacing: 0.05em;
+              color: #FFFFFF;
+              padding-top: 91px;
+              padding-bottom: 32px;
+            }
+
+            .footer_txt{
+                letter-spacing: 0.05em;
+                color: #FFFFFF;
+                opacity: 0.6;
+            }
+
+            .copy_txt{
+                letter-spacing: 0.05em;
+                color: #FFFFFF;
+                opacity: 0.4;
+            }
+
+            .bottom_buttom{
+                background: #5A98D0;
+                box-shadow: 5px 10px 20px rgba(53, 110, 173, 0.2);
+                font-size: 16px;
+                line-height: 26px;
+                text-align: center;
+                letter-spacing: 0.04em;
+                color: #FFFFFF;
+                padding: 15px 50px;
+                text-decoration: none;
+                display: inline-block;
+
+            }
+
+            .contact_message_text{
+                font-size: 16px;
+                line-height: 30px;
+                letter-spacing: 0.04em;
+                color: #1F3F68;
+                opacity: 0.8;
+            }
+
+            .contact_ref{
+                text-decoration: none;
+                font-size: 16px;
+                line-height: 26px;
+                letter-spacing: 0.05em;
+                color: #1F3F68;
+            }
+
+            .contact_list{
+                list-style-type: none;
+            }
+
+            .contact_list_el{
+                padding-bottom: 16px;
+            }
+
+            .contact_sub_header{
+
+            }
+		</style>
 </head>
 
 <body>
     <div class="contacts_container">
         <div class="contacts_main_block">
             <div class="contacts_address_block">
-                <img src="../static/img/geekbrains.png" alt="Фото урок2" title="это моя фотография" width="350"></imgsrc>
                 <div>
                     <h4 class="header_4 contact_sub_header">Address</h4>
                     <p class="simple_text">Страна: Россия, Город: Москва Улица: Большая Кремлевская Дом:1 Строение: 1
@@ -40,11 +442,11 @@
                     </ul>
                 </div>
             </div>
-            <form class="contacts_message_block" action="#">
+            <form class="contacts_message_block" action="" method="post">
                 <h4 class="header_4">Send us message</h4>
-                <p class="contact_message_text">Full Name</p> <input class="input_box" type="text" size="30"
+                <p class="contact_message_text">Full Name</p> <input class="input_box" type="text" name="name" size="30"
                     placeholder="Ваше Имя"> <br>
-                <p class="contact_message_text">Email</p> <input class="input_box" type="email" size="30"
+                <p class="contact_message_text">Email</p> <input class="input_box" name="mail" type="email" size="30"
                     placeholder="mail@mail.ru"> <br>
                 <p class="contact_message_text">Message </p>
                 <textarea class="input_box" rows="10" cols="45" name="text" placeholder="Введите ваш вопрос"></textarea>
@@ -61,14 +463,6 @@
         </div>
     </div>
     <div class="footer_block">
-        <div class="footer_talk_block">
-            <div class="footer_talk_block_text">
-                <h3 class="sub_header footer_header_txt">Домашнее задание 6 урока</h3>
-                <p class="simple_text footer_txt">Шестое задания курса HTML/CSS. Интерактивный курс</p>
-            </div>
-            <a href="#" class="bottom_buttom">Let’s Talk</a>
-        </div>
-        <hr>
         <div class="footer_contacts">
             <ul class="footer_list">
                 <li class="footer_list_el">A. Разработчки: Дьяченко Игорь</li>

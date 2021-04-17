@@ -1,3 +1,13 @@
+import logging
+import quopri
+
+from framework.requests import PostRequests, GetRequests
+from framework.log import framework_log_config
+
+
+logger = logging.getLogger('framework')
+
+
 class Application:
 
     def __init__(self, urlpatterns: dict, front_controllers: list):
@@ -17,6 +27,21 @@ class Application:
             # получаем view по url
             view = self.urlpatterns[path]
             request = {}
+            # Получаем все данные запроса
+            method = env['REQUEST_METHOD']
+            request['method'] = method
+
+            if method == 'POST':
+                data = PostRequests().get_request_params(env)
+                request['data'] = data
+                print(f'Нам пришёл post-запрос: {self.decode_value(data)}')
+                logger.info(f'Нам пришёл post-запрос: {self.decode_value(data)}')
+            if method == 'GET':
+                request_params = GetRequests().get_request_params(env)
+                request['request_params'] = request_params
+                print(f'Нам пришли GET-параметры: {request_params}')
+                logger.info(f'Нам пришли GET-параметры: {request_params}')
+
             # добавляем в запрос данные из front controllers
             for controller in self.front_controllers:
                 controller(request)
@@ -30,3 +55,12 @@ class Application:
             # Если url нет в urlpatterns - то страница не найдена
             start_response('404 NOT FOUND', [('Content-Type', 'text/html')])
             return [b"Not Found"]
+
+    @staticmethod
+    def decode_value(data):
+        new_data = {}
+        for k, v in data.items():
+            val = bytes(v.replace('%', '=').replace("+", " "), 'UTF-8')
+            val_decode_str = quopri.decodestring(val).decode('UTF-8')
+            new_data[k] = val_decode_str
+        return new_data
