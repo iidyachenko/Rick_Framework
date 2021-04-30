@@ -6,6 +6,12 @@ from framework import Application
 urlpatterns = {
     '/': views.main_view,
     '/about/': views.about_view,
+    '/study_programs/': views.StudyPrograms(),
+    '/courses-list/': views.CoursesList(),
+    '/create-course/': views.CreateCourse(),
+    '/create-category/': views.CreateCategory(),
+    '/category-list/': views.CategoryList(),
+    '/copy-course/': views.CopyCourse()
 }
 
 
