@@ -3,30 +3,37 @@ import quopri
 
 
 # абстрактный пользователь
+from paterns.behavior_patterns import Subject
+
+
 class User:
     pass
 
 
 # преподаватель
 class Teacher(User):
-    pass
+    def __init__(self, name):
+        self.name = name
 
 
 # студент
 class Student(User):
-    pass
+    def __init__(self, name):
+        self.name = name
+        self.courses = []
 
 
-# порождающий паттерн Фабричный метод
+# порождающий паттерн Абстрактная фабрика - фабрика пользователей
 class UserFactory:
     types = {
         'student': Student,
         'teacher': Teacher
     }
 
+    # порождающий паттерн Фабричный метод
     @classmethod
-    def create(cls, type_):
-        return cls.types[type_]()
+    def create(cls, type_, name):
+        return cls.types[type_](name)
 
 
 # порождающий паттерн Прототип - Курс
@@ -37,9 +44,10 @@ class CoursePrototype:
         return copy.deepcopy(self)
 
 
-class Course(CoursePrototype):
+class Course(CoursePrototype, Subject):
 
     def __init__(self, name, category):
+        super().__init__()
         self.name = name
         self.category = category
         self.category.courses.append(self)
@@ -86,7 +94,6 @@ class CourseFactory:
     def create(cls, type_, name, category):
         return cls.types[type_](name, category)
 
-
 # Основной интерфейс проекта
 class Engine:
     def __init__(self):
@@ -96,8 +103,8 @@ class Engine:
         self.categories = []
 
     @staticmethod
-    def create_user(type_):
-        return UserFactory.create(type_)
+    def create_user(type_, name):
+        return UserFactory.create(type_,name)
 
     @staticmethod
     def create_category(name, category=None):
@@ -105,7 +112,6 @@ class Engine:
 
     def find_category_by_id(self, id):
         for item in self.categories:
-            print('item', item.id)
             if item.id == id:
                 return item
         raise Exception(f'Нет категории с id = {id}')
@@ -114,17 +120,23 @@ class Engine:
     def create_course(type_, name, category):
         return CourseFactory.create(type_, name, category)
 
-    def get_course(self, name):
+    def get_course(self, name) -> Course:
         for item in self.courses:
             if item.name == name:
                 return item
         return None
+
+    def get_student(self, name) -> Student:
+        for item in self.students:
+            if item.name == name:
+                return item
 
     @staticmethod
     def decode_value(val):
         val_b = bytes(val.replace('%', '=').replace("+", " "), 'UTF-8')
         val_decode_str = quopri.decodestring(val_b)
         return val_decode_str.decode('UTF-8')
+
 
 
 # порождающий паттерн Синглтон
